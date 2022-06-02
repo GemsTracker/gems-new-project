@@ -47,6 +47,7 @@ services:
       - MYSQL_ROOT_PASSWORD=test123
     volumes:
       - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init/01-gems-db-init.sql:/docker-entrypoint-initdb.d/01-gems-db-init.sql
 
   traefik:
      image: traefik:v2.6
