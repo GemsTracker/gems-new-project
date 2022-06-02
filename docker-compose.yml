@@ -7,7 +7,9 @@ services:
       - webdev
     labels:
        - "traefik.enable=true"
-       - "traefik.http.routers.pulseNext.rule=Host(`pulse-next.test`)"
+       - "traefik.http.routers.pulseNext.rule=Host(`gemstracker.test`)"
+    ports:
+      - "8080:80"
     volumes:
       - ./docker/default.conf:/etc/nginx/conf.d/default.conf
       - ./:/app
