@@ -7,7 +7,7 @@ services:
       - webdev
     labels:
        - "traefik.enable=true"
-       - "traefik.http.routers.pulseNext.rule=Host(`gemstracker.test`)"
+       - "traefik.http.routers.gemstracker.rule=Host(`gemstracker.test`)"
     ports:
       - "8080:80"
     volumes:
