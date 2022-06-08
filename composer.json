@@ -34,7 +34,7 @@
     "require": {
         "php": "^7.4 || ~8.0.0 || ~8.1.0",
         "composer/package-versions-deprecated": "^1.10.99",
-        "gemstracker/gemstracker": "dev-master",
+        "gemstracker/gemstracker": "2.x-dev",
         "laminas/laminas-component-installer": "^2.6",
         "laminas/laminas-config-aggregator": "^1.6",
         "laminas/laminas-diactoros": "^2.7",
@@ -67,10 +67,6 @@
         }
     },
     "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/jvangestel/gemstracker-library.git"
-        },
         {
             "type": "git",
             "url": "https://github.com/MagnaFacta/zalt-loader.git"
