@@ -13,8 +13,8 @@ services:
     volumes:
       - ./docker/default.conf:/etc/nginx/conf.d/default.conf
       - ./:/app
-      - ../pulse_ls:/app/htdocs/ls
-      - ./docker/ls/config.php:/app/htdocs/ls/application/config/config.php
+      #- ../pulse_ls:/app/public/ls
+      #- ./docker/ls/config.php:/app/public/ls/application/config/config.php
     links:
       - php
 
