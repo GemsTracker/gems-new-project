@@ -9,7 +9,7 @@
     "support": {
         "docs": "https://gemstracker.org/wiki/doku.php?id=start",
         "issues": "https://github.com/GemsTracker/gemstracker-library/issues",
-        "source": "https://github.com/mezzio/mezzio-skeleton",
+        "source": "https://github.com/GemsTracker/gems-new-project"
     },
     "config": {
         "sort-packages": true,
