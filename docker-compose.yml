@@ -20,15 +20,15 @@ services:
 
   php:
     build:
-      context: ./docker/pulse
-      dockerfile: Pulse.Dockerfile
+      context: docker/php
+      dockerfile: php.Dockerfile
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     networks:
       - webdev
     volumes:
-      - ./docker/pulse/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ./:/app
     environment:
       - APP_ENV=development
