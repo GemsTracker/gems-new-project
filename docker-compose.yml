@@ -78,6 +78,7 @@ services:
      restart: always
      labels:
        - "traefik.http.routers.mailhog.rule=Host(`mailhog.test`)"
+       - "traefik.http.services.mailhog.loadbalancer.server.port=8025"
      networks:
        - webdev
 
