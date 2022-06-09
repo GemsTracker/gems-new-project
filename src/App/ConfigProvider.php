@@ -10,7 +10,9 @@ use App\Handler\HomePageHandlerFactory;
 use App\Handler\LegacyController;
 use App\Handler\PingHandler;
 use App\Legacy\LegacyControllerFactory;
+use App\Middleware\SecurityHeadersMiddleware;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
+use Mezzio\Helper\ContentLengthMiddleware;
 use Zalt\Loader\ProjectOverloader;
 
 /**
@@ -93,7 +95,11 @@ class ConfigProvider
             [
                 'name' => 'setup.reception.index',
                 'path' => '/setup/reception/index',
-                'middleware' => LegacyController::class,
+                'middleware' => [
+                    ContentLengthMiddleware::class,
+                    SecurityHeadersMiddleware::class,
+                    LegacyController::class,
+                ],
                 'allowed_methods' => ['GET'],
                 'options' => [
                     'controller' => \Gems_Default_ReceptionAction::class,
