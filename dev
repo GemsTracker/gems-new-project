@@ -71,7 +71,7 @@ elif [ "$1" == "rebuild" ]; then
 elif [ "$1" == "bash" ]; then
     shift 1
 
-    ARGS+=(exec)
+    ARGS+=(exec -u dev -w /app)
     [ ! -t 0 ] && ARGS+=(-T)
     ARGS+=("$APP_SERVICE" "bash" "$@")
 
