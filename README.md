@@ -11,3 +11,13 @@ GemsTracker is licensed under the New BSD License - see the [LICENSE](LICENSE.tx
 
 # Contribute
 Help on improving and developing the library is appreciated
+
+# Development
+Development can be done using docker. Start by copying `.env.example` to `.env` and modify if necessary.
+Then, shortcuts are available for frequent docker commands:
+
+    ./dev up          # Start containers
+    ./dev init        # Performs composer install
+    ./dev composer run development-enable      # Enable development mode
+
+After the first two commands, the application is available through http://pulse.test/ . Additionally, http://adminer.test/ provides access to the database and http://mailhog.test/ collects all sent e-mails.

@@ -31,6 +31,13 @@ fi
 # Source the ".env.example" file so environment variables are available...
 if [ -f ./.env ]; then
     source ./.env
+
+    difflines=$(awk -F= '{print $1}' .env | diff <(awk -F= '{print $1}' .env.example) - | wc -l)
+    if test "$difflines" -gt 0; then
+      echo "${YELLOW}.env is not up-to-date with .env.example${NC}" >&2
+    fi
+else
+    echo "${YELLOW}Could not find .env file. Please copy from .env.example.${NC}" >&2
 fi
 
 export APP_SERVICE=${APP_SERVICE:-"php"}
