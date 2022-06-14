@@ -92,20 +92,6 @@ class ConfigProvider
                 'middleware' => PingHandler::class,
                 'allowed_methods' => ['GET'],
             ],
-            [
-                'name' => 'setup.reception.index',
-                'path' => '/setup/reception/index',
-                'middleware' => [
-                    ContentLengthMiddleware::class,
-                    SecurityHeadersMiddleware::class,
-                    LegacyController::class,
-                ],
-                'allowed_methods' => ['GET'],
-                'options' => [
-                    'controller' => \Gems_Default_ReceptionAction::class,
-                    'action' => 'index',
-                ]
-            ]
         ];
     }
 
