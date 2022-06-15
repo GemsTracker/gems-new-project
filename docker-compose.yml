@@ -30,12 +30,8 @@ services:
     volumes:
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ./:/app
-    environment:
-      - APP_ENV=development
-      - DB_HOST=mysql
-      - DB_USER=root
-      - DB_PASS=test123
-      - DB_NAME=pulse
+    env_file:
+      - .env
 
   mysql:
     image: mysql:8
