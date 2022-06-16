@@ -48,7 +48,8 @@
         "mezzio/mezzio-helpers": "^5.8",
         "mezzio/mezzio-session-cache": "^1.7",
         "mezzio/mezzio-twigrenderer": "^2.9",
-        "symfony/dotenv": "^5.4"
+        "symfony/dotenv": "^5.4",
+        "robmorgan/phinx": "dev-master"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
@@ -70,6 +71,10 @@
         }
     },
     "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/jvangestel/phinx.git"
+        },
         {
             "type": "git",
             "url": "https://github.com/MagnaFacta/zalt-loader.git"
