@@ -4,8 +4,6 @@
 
 ## Config
 
-## Config
-
 The best way to register events is to use [Event Subscribers](https://symfony.com/doc/current/components/event_dispatcher.html#using-event-subscribers). You can automatically add your event subscribers to the EventDispatcher by registering them in your ConfigProvider in the `event` namespace
 ```php
 return [
@@ -23,8 +21,8 @@ You can use the Event Dispatcher by injecting it into your class with the `\Symf
 
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
-MyClass {
-    
+class MyClass
+{
     protected EventDispatcher $event
 
     public function __construct(EventDispatcher $event)

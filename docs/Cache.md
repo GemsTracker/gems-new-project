@@ -44,7 +44,8 @@ You can use the cache adapter by injecting it into your class with the `\Psr\Cac
 
 use \Psr\Cache\CacheItemPoolInterface;
 
-MyClass {
+class MyClass
+{
     
     protected CacheItemPoolInterface $cache
 
