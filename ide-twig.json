@@ -1,0 +1,16 @@
+{
+  "namespaces": [
+    {
+      "namespace": "app",
+      "path": "templates/app"
+    },
+    {
+      "namespace": "error",
+      "path": "templates/error"
+    },
+    {
+      "namespace": "layout",
+      "path": "templates/layout"
+    }
+  ]
+}
