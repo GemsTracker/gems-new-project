@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
+use Acl\AclFactory;
+use Acl\AclRepository;
 use App\Factory\ProjectOverloaderFactory;
 use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
@@ -11,6 +13,7 @@ use App\Handler\LegacyController;
 use App\Handler\PingHandler;
 use App\Legacy\LegacyControllerFactory;
 use App\Middleware\SecurityHeadersMiddleware;
+use Laminas\Permissions\Acl\Acl;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use Mezzio\Helper\ContentLengthMiddleware;
 use Zalt\Loader\ProjectOverloader;
@@ -37,6 +40,8 @@ class ConfigProvider
             'dependencies' => $this->getDependencies(),
             'templates'    => $this->getTemplates(),
             'routes'       => $this->getRoutes(),
+            'permissions'  => $this->getPermissions(),
+            'roles'        => $this->getRoles(),
         ];
     }
 
@@ -65,6 +70,8 @@ class ConfigProvider
             'factories'  => [
                 ProjectOverloader::class => ProjectOverloaderFactory::class,
                 HomePageHandler::class => HomePageHandlerFactory::class,
+                Acl::class => AclFactory::class,
+                AclRepository::class => ReflectionBasedAbstractFactory::class,
             ],
             'abstract_factories' => [
                 ReflectionBasedAbstractFactory::class,
@@ -91,6 +98,9 @@ class ConfigProvider
                 'path' => '/api/ping',
                 'middleware' => PingHandler::class,
                 'allowed_methods' => ['GET'],
+                'options' => [
+                    'permission' => 'p-permission-2',
+                ]
             ],
         ];
     }
@@ -108,6 +118,34 @@ class ConfigProvider
                 'error'  => ['templates/error'],
                 'layout' => ['templates/layout'],
             ],
+        ];
+    }
+
+    /**
+     * Returns the permissions defined by this module
+     *
+     * @return mixed[]
+     */
+    public function getPermissions(): array
+    {
+        return [
+            'p-permission-1',
+            'p-permission-2',
+            'p-permission-3',
+        ];
+    }
+
+    /**
+     * Returns the roles defined by this project
+     *
+     * @return mixed[]
+     */
+    public function getRoles(): array
+    {
+        return [
+            'role-1' => ['p-permission-1', 'p-permission-2', 'gt-permission-1'],
+            'role-2' => ['p-permission-2', 'p-permission-3'],
+            'role-3' => ['gt-permission-2', 'gt-permission-3'],
         ];
     }
 }

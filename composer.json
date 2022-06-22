@@ -38,6 +38,7 @@
         "laminas/laminas-component-installer": "^2.7",
         "laminas/laminas-config-aggregator": "^1.7",
         "laminas/laminas-diactoros": "^2.11",
+        "laminas/laminas-permissions-acl": "^2.9",
         "laminas/laminas-servicemanager": "^3.11",
         "laminas/laminas-stdlib": "^3.9",
         "magnafacta/zalt-loader": "dev-psr-11",
@@ -48,8 +49,8 @@
         "mezzio/mezzio-helpers": "^5.8",
         "mezzio/mezzio-session-cache": "^1.7",
         "mezzio/mezzio-twigrenderer": "^2.9",
-        "symfony/dotenv": "^5.4",
-        "robmorgan/phinx": "dev-master"
+        "robmorgan/phinx": "dev-master",
+        "symfony/dotenv": "^5.4"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
