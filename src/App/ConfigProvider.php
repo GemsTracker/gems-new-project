@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Acl\AclFactory;
 use App\Factory\ProjectOverloaderFactory;
 use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
 use App\Handler\LegacyController;
 use App\Handler\PingHandler;
 use App\Legacy\LegacyControllerFactory;
-use App\Middleware\AclMiddleware;
+use Gems\Middleware\AclMiddleware;
 use App\Middleware\SecurityHeadersMiddleware;
-use Laminas\Permissions\Acl\Acl;
+use Gems\Util\RouteGroupTrait;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use Mezzio\Helper\ContentLengthMiddleware;
 use Zalt\Loader\ProjectOverloader;
@@ -25,6 +24,8 @@ use Zalt\Loader\ProjectOverloader;
  */
 class ConfigProvider
 {
+    use RouteGroupTrait;
+
     /**
      * Returns the configuration array
      *
@@ -70,7 +71,6 @@ class ConfigProvider
             'factories'  => [
                 ProjectOverloader::class => ProjectOverloaderFactory::class,
                 HomePageHandler::class => HomePageHandlerFactory::class,
-                Acl::class => AclFactory::class,
             ],
             'abstract_factories' => [
                 ReflectionBasedAbstractFactory::class,
@@ -118,33 +118,6 @@ class ConfigProvider
         ];
     }
 
-    public function routeGroup(array $groupOptions, array $routes): array
-    {
-        foreach ($routes as $i => $route) {
-            if (isset($groupOptions['path'])) {
-                $route['path'] = rtrim($groupOptions['path'], '/') . '/' . ltrim($route['path'] ?? '', '/');
-            }
-
-            if (isset($groupOptions['middleware'])) {
-                $route['middleware'] = array_merge(
-                    (array)$groupOptions['middleware'],
-                    (array)($route['middleware'] ?? [])
-                );
-            }
-
-            if (isset($groupOptions['options'])) {
-                $route['options'] = array_merge(
-                    $groupOptions['options'],
-                    $route['options'] ?? []
-                );
-            }
-
-            $routes[$i] = $route;
-        }
-
-        return $routes;
-    }
-
     /**
      * Returns the templates configuration
      *
@@ -183,9 +156,9 @@ class ConfigProvider
     public function getRoles(): array
     {
         return [
-            'role-1' => ['p-permission-1', 'p-permission-2', 'gt-permission-1'],
+            'role-1' => ['p-permission-1', 'p-permission-2', 'gt.setup'],
             'role-2' => ['p-permission-2', 'p-permission-3'],
-            'role-3' => ['gt-permission-2', 'gt-permission-3'],
+            'role-3' => ['gt.setup'],
         ];
     }
 }
