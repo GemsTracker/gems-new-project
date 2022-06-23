@@ -161,7 +161,7 @@ elif [ "$1" == "package" ]; then
 
     exit
 
-# Pass unknown commands to the 'docker-compose" binary...
+# Pass unknown commands to the "docker-compose" binary...
 else
     ARGS+=("$@")
 fi
