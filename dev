@@ -132,12 +132,12 @@ elif [ "$1" == "mysql" ]; then
     ARGS+=("$MYSQL_SERVICE" bash -c)
     ARGS+=("MYSQL_PWD=\${MYSQL_PASSWORD} mysql -u \${MYSQL_USER} \${MYSQL_DATABASE}")
 
-# Initiate a MySQL CLI terminal session within the "mysql" container...
-elif [ "$1" == "package" ]; then
+# Edit or restore a vendor package
+elif [ "$1" == "vendor" ]; then
     shift 1
 
-    if ([ "$1" != "clone" ] && [ "$1" != "reset" ]) || [ "$2" == "" ]; then
-        echo "Syntax: ./dev {clone|reset} <vendor/package>"
+    if ([ "$1" != "edit" ] && [ "$1" != "restore" ]) || [ "$2" == "" ]; then
+        echo "Syntax: ./dev {edit|restore} <vendor/package>"
         exit
     fi
 
@@ -150,12 +150,12 @@ elif [ "$1" == "package" ]; then
         exit
     fi
 
-    if [ "$1" == "clone" ]; then
+    if [ "$1" == "edit" ]; then
         echo "Cloning $url @ $ref into vendor/$2..."
         ./dev bash -c "rm -rf 'vendor/$2' && git clone '$url' 'vendor/$2' && cd 'vendor/$2' && git checkout '$ref'"
         echo ""
         echo "Done cloning, you may want to checkout another branch before making changes"
-    elif [ "$1" == "reset" ]; then
+    elif [ "$1" == "restore" ]; then
         ./dev bash -c "rm -rf 'vendor/$2' && composer install"
     fi
 
