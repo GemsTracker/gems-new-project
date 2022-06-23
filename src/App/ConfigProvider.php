@@ -11,6 +11,7 @@ use App\Handler\HomePageHandlerFactory;
 use App\Handler\LegacyController;
 use App\Handler\PingHandler;
 use App\Legacy\LegacyControllerFactory;
+use App\Middleware\AclMiddleware;
 use App\Middleware\SecurityHeadersMiddleware;
 use Laminas\Permissions\Acl\Acl;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
@@ -100,7 +101,48 @@ class ConfigProvider
                     'permission' => 'p-permission-2',
                 ]
             ],
+            ...$this->routeGroup([
+                'path' => '/api',
+                'middleware' => [AclMiddleware::class],
+                'options' => [
+                    'permission' => 'p-permission-2',
+                ]
+            ], [
+                [
+                    'name' => 'api.ping2',
+                    'path' => '/ping2',
+                    'middleware' => PingHandler::class,
+                    'allowed_methods' => ['GET'],
+                ],
+            ])
         ];
+    }
+
+    public function routeGroup(array $groupOptions, array $routes): array
+    {
+        foreach ($routes as $i => $route) {
+            if (isset($groupOptions['path'])) {
+                $route['path'] = rtrim($groupOptions['path'], '/') . '/' . ltrim($route['path'] ?? '', '/');
+            }
+
+            if (isset($groupOptions['middleware'])) {
+                $route['middleware'] = array_merge(
+                    (array)$groupOptions['middleware'],
+                    (array)($route['middleware'] ?? [])
+                );
+            }
+
+            if (isset($groupOptions['options'])) {
+                $route['options'] = array_merge(
+                    $groupOptions['options'],
+                    $route['options'] ?? []
+                );
+            }
+
+            $routes[$i] = $route;
+        }
+
+        return $routes;
     }
 
     /**
