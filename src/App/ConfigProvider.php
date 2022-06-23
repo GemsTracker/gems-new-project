@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace App;
 
-use Acl\AclFactory;
-use Acl\AclRepository;
+use App\Acl\AclFactory;
 use App\Factory\ProjectOverloaderFactory;
 use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
@@ -71,7 +70,6 @@ class ConfigProvider
                 ProjectOverloader::class => ProjectOverloaderFactory::class,
                 HomePageHandler::class => HomePageHandlerFactory::class,
                 Acl::class => AclFactory::class,
-                AclRepository::class => ReflectionBasedAbstractFactory::class,
             ],
             'abstract_factories' => [
                 ReflectionBasedAbstractFactory::class,

@@ -1,6 +1,6 @@
 <?php
 
-namespace Acl;
+namespace App\Acl;
 
 use Laminas\ServiceManager\Factory\FactoryInterface;
 use Psr\Container\ContainerInterface;

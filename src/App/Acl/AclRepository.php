@@ -1,6 +1,6 @@
 <?php
 
-namespace Acl;
+namespace App\Acl;
 
 use Laminas\Permissions\Acl\Acl;
 use Laminas\Permissions\Acl\Resource\GenericResource;
@@ -12,7 +12,7 @@ class AclRepository
 
     private ?Acl $acl = null;
 
-    public function __construct($config)
+    public function __construct(array $config)
     {
         $this->config = $config;
     }
