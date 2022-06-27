@@ -63,7 +63,7 @@ class MyClass
 $key = 'test';
 
 $item = $this->cache->getItem($key); // Will always return a \Psr\Cache\CacheItemInterface object
-$value = $item->get(); // Will default to null if cache item is not fount
+$value = $item->get(); // Will default to null if cache item is not found
 ```
 
 ### Check if Cache item exists
@@ -88,7 +88,7 @@ $key = 'test';
 
 $item = $this->cache->hasItem($key);
 $item->set($value);
-$this->cache->save();
+$this->cache->save($item);
 ```
 
 ### Cache item specific expiration
