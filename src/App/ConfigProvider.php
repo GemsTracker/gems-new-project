@@ -10,6 +10,7 @@ use App\Handler\HomePageHandlerFactory;
 use App\Handler\LegacyController;
 use App\Handler\PingHandler;
 use App\Legacy\LegacyControllerFactory;
+use Gems\Dev\Middleware\TestCurrentUserMiddleware;
 use Gems\Middleware\AclMiddleware;
 use App\Middleware\SecurityHeadersMiddleware;
 use Gems\Util\RouteGroupTrait;
@@ -103,7 +104,7 @@ class ConfigProvider
             ],
             ...$this->routeGroup([
                 'path' => '/api',
-                'middleware' => [AclMiddleware::class],
+                'middleware' => [TestCurrentUserMiddleware::class, AclMiddleware::class],
                 'options' => [
                     'permission' => 'p-permission-2',
                 ]
@@ -159,6 +160,7 @@ class ConfigProvider
             'role-1' => ['p-permission-1', 'p-permission-2', 'gt.setup'],
             'role-2' => ['p-permission-2', 'p-permission-3'],
             'role-3' => ['gt.setup'],
+            'nologin' => ['gt.setup', 'p-permission-2'],
         ];
     }
 }
