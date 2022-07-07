@@ -13,6 +13,7 @@ use App\Legacy\LegacyControllerFactory;
 use Gems\Dev\Middleware\TestCurrentUserMiddleware;
 use Gems\Middleware\AclMiddleware;
 use App\Middleware\SecurityHeadersMiddleware;
+use Gems\Middleware\MenuMiddleware;
 use Gems\Util\RouteGroupTrait;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use Mezzio\Helper\ContentLengthMiddleware;
@@ -42,7 +43,6 @@ class ConfigProvider
             'dependencies' => $this->getDependencies(),
             'templates'    => $this->getTemplates(),
             'routes'       => $this->getRoutes(),
-            'permissions'  => $this->getPermissions(),
             'roles'        => $this->getRoles(),
         ];
     }
@@ -86,7 +86,7 @@ class ConfigProvider
      */
     public function getRoutes(): array
     {
-        return [
+        return $this->routeGroup(['middleware' => MenuMiddleware::class], [
             [
                 'name' => 'home',
                 'path' => '/',
@@ -102,21 +102,7 @@ class ConfigProvider
                     'permission' => 'p-permission-2',
                 ]
             ],
-            ...$this->routeGroup([
-                'path' => '/api',
-                'middleware' => [TestCurrentUserMiddleware::class, AclMiddleware::class],
-                'options' => [
-                    'permission' => 'p-permission-2',
-                ]
-            ], [
-                [
-                    'name' => 'api.ping2',
-                    'path' => '/ping2',
-                    'middleware' => PingHandler::class,
-                    'allowed_methods' => ['GET'],
-                ],
-            ])
-        ];
+        ]);
     }
 
     /**
@@ -136,20 +122,6 @@ class ConfigProvider
     }
 
     /**
-     * Returns the permissions defined by this module
-     *
-     * @return mixed[]
-     */
-    public function getPermissions(): array
-    {
-        return [
-            'p-permission-1',
-            'p-permission-2',
-            'p-permission-3',
-        ];
-    }
-
-    /**
      * Returns the roles defined by this project
      *
      * @return mixed[]
@@ -157,10 +129,6 @@ class ConfigProvider
     public function getRoles(): array
     {
         return [
-            'role-1' => ['p-permission-1', 'p-permission-2', 'gt.setup'],
-            'role-2' => ['p-permission-2', 'p-permission-3'],
-            'role-3' => ['gt.setup'],
-            'nologin' => ['gt.setup', 'p-permission-2'],
         ];
     }
 }
