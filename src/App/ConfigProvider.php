@@ -98,9 +98,6 @@ class ConfigProvider
                 'path' => '/api/ping',
                 'middleware' => PingHandler::class,
                 'allowed_methods' => ['GET'],
-                'options' => [
-                    'permission' => 'p-permission-2',
-                ]
             ],
         ]);
     }
