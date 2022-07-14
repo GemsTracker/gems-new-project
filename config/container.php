@@ -6,6 +6,7 @@ use Laminas\ServiceManager\ServiceManager;
 
 // Load configuration
 $config = require __DIR__ . '/config.php';
+$config['rootDir'] = dirname(__DIR__);
 
 $dependencies                       = $config['dependencies'];
 $dependencies['services']['config'] = $config;
