@@ -10,7 +10,11 @@ use App\Handler\HomePageHandlerFactory;
 use App\Handler\LegacyController;
 use App\Handler\PingHandler;
 use App\Legacy\LegacyControllerFactory;
+use Gems\Dev\Middleware\TestCurrentUserMiddleware;
+use Gems\Middleware\AclMiddleware;
 use App\Middleware\SecurityHeadersMiddleware;
+use Gems\Middleware\MenuMiddleware;
+use Gems\Util\RouteGroupTrait;
 use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
 use Mezzio\Helper\ContentLengthMiddleware;
 use Zalt\Loader\ProjectOverloader;
@@ -22,6 +26,8 @@ use Zalt\Loader\ProjectOverloader;
  */
 class ConfigProvider
 {
+    use RouteGroupTrait;
+
     /**
      * Returns the configuration array
      *
@@ -37,6 +43,7 @@ class ConfigProvider
             'dependencies' => $this->getDependencies(),
             'templates'    => $this->getTemplates(),
             'routes'       => $this->getRoutes(),
+            'roles'        => $this->getRoles(),
         ];
     }
 
@@ -79,7 +86,7 @@ class ConfigProvider
      */
     public function getRoutes(): array
     {
-        return [
+        return $this->routeGroup(['middleware' => MenuMiddleware::class], [
             [
                 'name' => 'home',
                 'path' => '/',
@@ -92,7 +99,7 @@ class ConfigProvider
                 'middleware' => PingHandler::class,
                 'allowed_methods' => ['GET'],
             ],
-        ];
+        ]);
     }
 
     /**
@@ -108,6 +115,17 @@ class ConfigProvider
                 'error'  => ['templates/error'],
                 'layout' => ['templates/layout'],
             ],
+        ];
+    }
+
+    /**
+     * Returns the roles defined by this project
+     *
+     * @return mixed[]
+     */
+    public function getRoles(): array
+    {
+        return [
         ];
     }
 }
