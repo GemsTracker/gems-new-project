@@ -73,9 +73,6 @@ class ConfigProvider
                 ProjectOverloader::class => ProjectOverloaderFactory::class,
                 HomePageHandler::class => HomePageHandlerFactory::class,
             ],
-            'abstract_factories' => [
-                ReflectionBasedAbstractFactory::class,
-            ],
         ];
     }
 
