@@ -20,4 +20,9 @@ Then, shortcuts are available for frequent docker commands:
     ./dev init        # Performs composer install
     ./dev composer run development-enable      # Enable development mode
 
-After the first two commands, the application is available through http://pulse.test/ . Additionally, http://adminer.test/ provides access to the database and http://mailhog.test/ collects all sent e-mails.
+After the first two commands, the application is available through http://gemstracker.test/ . Additionally, http://adminer.test/ provides access to the database and http://mailhog.test/ collects all sent e-mails.
+
+Make sure to also perform the following commands to populate the database:
+
+    ./dev php vendor/bin/phinx migrate
+    ./dev php vendor/bin/phinx seed:run
