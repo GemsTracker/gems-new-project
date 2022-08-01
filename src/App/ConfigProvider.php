@@ -70,7 +70,6 @@ class ConfigProvider
     {
         return [
             'factories'  => [
-                ProjectOverloader::class => ProjectOverloaderFactory::class,
                 HomePageHandler::class => HomePageHandlerFactory::class,
             ],
         ];
