@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>GemsTracker 2</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/style/xpert.css">
+    <link rel="stylesheet" href="/style/carefacts.css">
 </head>
 <body>
 <div id="container" class="container-fluid">
@@ -15,6 +15,8 @@
     <div class="content">
         <div id="main-container" class="include-menu">
             <div id="main" class="container-fluid">
+                {% if flashMessages is defined %}{{ include('@layout/flash-messages.html.twig') }}{% endif %}
+
                 {{ content|raw }}
             </div>
         </div>
