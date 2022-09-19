@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use App\Factory\ProjectOverloaderFactory;
+use App\Handler\HomeHandler;
 use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
 use App\Handler\LegacyController;
@@ -86,7 +87,7 @@ class ConfigProvider
             [
                 'name' => 'home',
                 'path' => '/',
-                'middleware' => HomePageHandler::class,
+                'middleware' => HomeHandler::class,
                 'allowed_methods' => ['GET'],
             ],
             [
