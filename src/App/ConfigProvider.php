@@ -4,21 +4,18 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Factory\ProjectOverloaderFactory;
 use App\Handler\HomeHandler;
 use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
-use App\Handler\LegacyController;
 use App\Handler\PingHandler;
-use App\Legacy\LegacyControllerFactory;
-use Gems\Dev\Middleware\TestCurrentUserMiddleware;
-use Gems\Middleware\AclMiddleware;
-use App\Middleware\SecurityHeadersMiddleware;
+use Gems\AuthNew\AuthenticationMiddleware;
+use Gems\Middleware\LocaleMiddleware;
 use Gems\Middleware\MenuMiddleware;
+use Gems\Middleware\SecurityHeadersMiddleware;
 use Gems\Util\RouteGroupTrait;
-use Laminas\ServiceManager\AbstractFactory\ReflectionBasedAbstractFactory;
-use Mezzio\Helper\ContentLengthMiddleware;
-use Zalt\Loader\ProjectOverloader;
+use Mezzio\Csrf\CsrfMiddleware;
+use Mezzio\Flash\FlashMessageMiddleware;
+use Mezzio\Session\SessionMiddleware;
 
 /**
  * The configuration provider for the App module
