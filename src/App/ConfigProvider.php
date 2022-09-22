@@ -110,7 +110,6 @@ class ConfigProvider
             'paths' => [
                 'app'    => ['templates/app'],
                 'error'  => ['templates/error'],
-                'layout' => ['templates/layout'],
             ],
         ];
     }
