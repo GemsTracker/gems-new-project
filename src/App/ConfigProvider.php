@@ -83,7 +83,19 @@ class ConfigProvider
      */
     public function getRoutes(): array
     {
-        return $this->routeGroup(['middleware' => MenuMiddleware::class], [
+        return $this->routeGroup(['middleware' =>
+            [
+                SecurityHeadersMiddleware::class,
+                SessionMiddleware::class,
+                FlashMessageMiddleware::class,
+                CsrfMiddleware::class,
+                LocaleMiddleware::class,
+                AuthenticationMiddleware::class,
+
+                MenuMiddleware::class,
+            ]
+        ],
+        [
             [
                 'name' => 'home',
                 'path' => '/',
