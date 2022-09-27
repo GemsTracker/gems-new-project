@@ -8,6 +8,7 @@ services:
     labels:
        - "traefik.enable=true"
        - "traefik.http.routers.gemstracker.rule=Host(`gemstracker.test`)"
+       - traefik.http.routers.gemstracker.entrypoints=http,https
     ports:
       - "8080:80"
     volumes:
@@ -27,6 +28,10 @@ services:
         - GID=${GID:-1000}
     networks:
       - webdev
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gems-vite.rule=Host(`gemstracker.test`)
+      - traefik.http.routers.gems-vite.entrypoints=vite
     volumes:
       - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
       - ./:/app
@@ -47,11 +52,17 @@ services:
 
   traefik:
      image: traefik:v2.6
-     command: --api.insecure=true --providers.docker
+     command:
+       - --api.insecure=true
+       - --providers.docker
+       - --entryPoints.http.address=:80
+       - --entryPoints.https.address=:443
+       - --entryPoints.vite.address=:5173
      networks:
        - webdev
      ports:
        - "80:80"
+       - "443:443"
        - "8082:8080"
      volumes:
        - /var/run/docker.sock:/var/run/docker.sock
@@ -62,7 +73,8 @@ services:
        dockerfile: adminer.Dockerfile
      restart: always
      labels:
-       - "traefik.http.routers.adminer.rule=Host(`adminer.test`)"
+        - traefik.http.routers.adminer.rule=Host(`adminer.test`)
+        - traefik.http.routers.adminer.entrypoints=http,https
      networks:
        - webdev
      environment:
@@ -73,8 +85,9 @@ services:
      image: mailhog/mailhog
      restart: always
      labels:
-       - "traefik.http.routers.mailhog.rule=Host(`mailhog.test`)"
-       - "traefik.http.services.mailhog.loadbalancer.server.port=8025"
+        - traefik.http.routers.mailhog.rule=Host(`mailhog.test`)
+        - traefik.http.routers.mailhog.entrypoints=http,https
+        - traefik.http.services.mailhog.loadbalancer.server.port=8025
      networks:
        - webdev
 

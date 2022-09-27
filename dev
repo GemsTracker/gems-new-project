@@ -54,6 +54,13 @@ if [ "$1" == "php" ]; then
     [ ! -t 0 ] && ARGS+=(-T)
     ARGS+=("$APP_SERVICE" "php" "$@")
 
+elif [ "$1" == "npm" ]; then
+    shift 1
+
+    ARGS+=(exec -u dev -w /app)
+    [ ! -t 0 ] && ARGS+=(-T)
+    ARGS+=("$APP_SERVICE" "npm" "$@")
+
 # Proxy vendor binary commands on the application container...
 elif [ "$1" == "bin" ]; then
     shift 1

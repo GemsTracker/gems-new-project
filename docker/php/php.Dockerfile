@@ -1,3 +1,4 @@
+FROM node:16 AS node
 FROM php:8.1-fpm
 
 # Install system dependencies
@@ -63,6 +64,11 @@ ENV GID=${GID}
 RUN groupadd dev  -g ${GID}
 RUN useradd dev -m -u 1000 -g ${UID}
 
+# copy node from node build
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+
 
 # Create composer cache dir for www-data user
 RUN mkdir /var/www/.composer \
@@ -73,3 +79,4 @@ RUN mkdir /app \
     && chown -R www-data:www-data /app
 
 USER dev
+EXPOSE 5173
