@@ -5,7 +5,16 @@
     "build": "vite build",
     "build-dev": "vite build --mode development --sourcemap"
   },
+  "dependencies": {
+    "axios": "^0.27.2",
+    "vue": "^3.2.39"
+  },
   "devDependencies": {
+    "@vitejs/plugin-vue": "^3.1.0",
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-vue": "^9.5.1",
     "postcss": "^8.1.14",
     "vite": "^3.0.0"
   }
