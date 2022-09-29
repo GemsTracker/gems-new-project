@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "gems-js": "github:GemsTracker/gems-js",
     "vue": "^3.2.39"
   },
   "devDependencies": {
