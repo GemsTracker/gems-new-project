@@ -10036,20 +10036,3 @@ header .description {
 header .description h1 {
   font-size: 5rem;
 }
-
-/* Auth idle checker */
-#authIdleCheckerWarning {
-  position: fixed;
-  top: 50px;
-  left: 20%;
-  width: 60%;
-}
-
-#authIdleCheckerWarning p {
-  margin-bottom: 10px;
-}
-
-#authIdleCheckerWarning button {
-  margin-bottom: 0;
-  margin-right: 0.5em;
-}
