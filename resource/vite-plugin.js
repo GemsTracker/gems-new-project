@@ -41,7 +41,7 @@ export default function gems(userConfig) {
       },
       resolve: {
         alias: {
-          '@': '/resources/js',
+          '@': '/resource/js',
           vue: 'vue/dist/vue.esm-bundler.js',
         },
       },
