@@ -1,2 +1,2 @@
 /* eslint-disable no-unused-vars */
-import Authenticated from 'gems-js/src/authenticated';
+import 'gems-js/src/authenticated';
