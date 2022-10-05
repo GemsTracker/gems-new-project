@@ -10,6 +10,8 @@ export default defineConfig({
         // 'resource/js/vue-respondent.js',
         'resource/js/gems-vue.js',
         'resource/js/jquery.js',
+        'resource/js/general.js',
+        'resource/js/authenticated.js',
       ],
       refresh: true,
       publicHost: 'gemstracker.test',
