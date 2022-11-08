@@ -61,6 +61,14 @@ elif [ "$1" == "npm" ]; then
     [ ! -t 0 ] && ARGS+=(-T)
     ARGS+=("$APP_SERVICE" "npm" "$@")
 
+# update both composer and npm and builds js
+elif [ "$1" == "update" ]; then
+    shift 1
+    docker-compose exec -u dev -w /app "${APP_SERVICE}" composer update
+    docker-compose exec -u dev -w /app "${APP_SERVICE}" npm update
+    docker-compose exec -u dev -w /app "${APP_SERVICE}" npm run build
+    exit
+
 # Proxy vendor binary commands on the application container...
 elif [ "$1" == "bin" ]; then
     shift 1
