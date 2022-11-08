@@ -67,6 +67,14 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
     // - route-based validation
     // - etc.
 
+    $config = $container->get('config');
+    if (isset($config['pipeline'])) {
+        ksort($config['pipeline'], SORT_NUMERIC);
+        foreach($config['pipeline'] as $middleware) {
+            $app->pipe($middleware);
+        }
+    }
+
     // Register the dispatch middleware in the middleware pipeline
     $app->pipe(DispatchMiddleware::class);
 
