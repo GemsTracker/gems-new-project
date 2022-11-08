@@ -81,6 +81,14 @@
         {
             "type": "git",
             "url": "https://github.com/MagnaFacta/zalt-util.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/MagnaFacta/zalt-html.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/MagnaFacta/zalt-late.git"
         }
     ],
     "scripts": {
