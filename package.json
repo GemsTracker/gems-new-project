@@ -8,6 +8,8 @@
   "dependencies": {
     "axios": "^0.27.2",
     "gems-js": "github:GemsTracker/gems-js",
+    "bootstrap": "^5.2.2",
+    "gems-style": "github:GemsTracker/gems-style",
     "vue": "^3.2.39"
   },
   "devDependencies": {
@@ -17,6 +19,7 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-vue": "^9.5.1",
     "postcss": "^8.1.14",
+    "sass": "^1.56.1",
     "vite": "^3.0.0"
   }
 }

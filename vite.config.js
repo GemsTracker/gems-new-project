@@ -12,6 +12,7 @@ export default defineConfig({
         'resource/js/jquery.js',
         'resource/js/general.js',
         'resource/js/authenticated.js',
+        'resource/css/gems.scss',
       ],
       refresh: true,
       publicHost: 'gemstracker.test',
