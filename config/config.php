@@ -10,10 +10,17 @@ use Laminas\ConfigAggregator\PhpFileProvider;
 // `config/autoload/local.php`.
 $cacheConfig = [
     'config_cache_path' => 'data/cache/config-cache.php',
+    'autoconfig' => [
+        'cache_path' => 'data/cache/autoconfig.config.php',
+    ],
 ];
 
-$dotenv = new \Symfony\Component\Dotenv\Dotenv();
-$dotenv->loadEnv(dirname(dirname(__FILE__)).'/.env.example');
+$dirConfig = [
+    'rootDir' => dirname(__DIR__),
+    'publicDir' => dirname(__DIR__) . '/public',
+];
+
+$modules = require('modules.php');
 
 $aggregator = new ConfigAggregator([
     \Mezzio\Helper\ConfigProvider::class,
@@ -24,15 +31,11 @@ $aggregator = new ConfigAggregator([
     \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
     \Mezzio\Twig\ConfigProvider::class,
     \Laminas\Diactoros\ConfigProvider::class,
+    new ArrayProvider($dirConfig),
 
+    new PhpFileProvider($cacheConfig['autoconfig']['cache_path']),
 
-
-    \Gems\ConfigProvider::class,
-    \Gems\LegacyConfigProvider::class,
-    \Gems\Dev\ConfigProvider::class,
-
-    // Default App module config
-    App\ConfigProvider::class,
+    ...$modules,
 
     // Load application config in a pre-defined order in such a way that local settings
     // overwrite global settings. (Loaded as first to last):
