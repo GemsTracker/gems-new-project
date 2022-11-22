@@ -46,7 +46,10 @@ In order to throttle login attempts, a `LoginThrottle` class instance can be ret
 ### Configuration
 The following configuration is available:
 - `session.max_total_time` - overall maximum session time in seconds. After this time, the user must log in again. Defaults to 10 hours
-- `session.max_away_time` - maximum time in seconds a user stays logged in after closing the (last) application tab. Defaults to 15 minutes
+- `session.max_away_time` - maximum time in seconds a user stays logged in after closing the (last) application tab. Defaults to 5 minutes
+- `session.max_idle_time` - maximum time in seconds a user stays logged in when idle, i.e. when being inactive while having at least one tab open. Defaults to 20 minutes
+- `session.idle_warning_before_logout` - when a user is idle, this parameter defines when the user will see receive a popup notification warning that he will be logged out shortly. Defined as number of seconds before actually logging out automatically. Defaults to 2 minutes
+- `session.auth_poll_interval` - when a user is idle, this parameter defines at what interval the open tab should check the current login status, in order to either log out the user or show the warning mentioned above. Defaults to 1 minute, i.e. checking each minute
 - `loginThrottle.failureBlockCount` - the maximum number of attempts within the set time period. Defaults to 6
 - `loginThrottle.failureIgnoreTime` - time period in seconds, serves as aggregate time interval for `failureBlockCount` as well as waiting time when a block occurs. Defaults to 10 minutes
 
