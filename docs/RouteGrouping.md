@@ -18,7 +18,7 @@ Example:
     'path' => '/api',
     'middleware' => [AclMiddleware::class],
     'options' => [
-        'permission' => 'some-general-permission',
+        'privilege' => 'some-general-privilege',
     ]
 ], [
     // (routes)
