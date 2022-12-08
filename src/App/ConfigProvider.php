@@ -57,6 +57,7 @@ class ConfigProvider
             'password'  => getenv('DB_PASS'),
             'database'  => getenv('DB_NAME'),
             'charset'   => 'utf8',
+            'options'   => ['buffer_results' => true],
         ];
     }
 
