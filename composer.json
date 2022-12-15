@@ -101,6 +101,10 @@
         {
             "type": "git",
             "url": "https://github.com/gemstracker/gems-api.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/gemstracker/gems-fhir-api.git"
         }
     ],
     "scripts": {
