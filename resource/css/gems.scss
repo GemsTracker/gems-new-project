@@ -15,8 +15,6 @@
 @import 'node_modules/gems-style/src/assets/css/scss/font-awesome.scss';
 @import 'node_modules/gems-style/src/assets/css/scss/forms.scss';
 @import 'node_modules/gems-style/src/assets/css/scss/helpers.scss';
-@import 'node_modules/gems-style/src/assets/css/scss/jquery-ui.scss';
-@import 'node_modules/gems-style/src/assets/css/scss/jquery-ui-sortable.scss';
 @import 'node_modules/gems-style/src/assets/css/scss/links.scss';
 @import 'node_modules/gems-style/src/assets/css/scss/locale.scss';
 @import 'node_modules/gems-style/src/assets/css/scss/menu.scss';
@@ -25,5 +23,18 @@
 @import 'node_modules/gems-style/src/assets/css/scss/trafficlight.scss';
 @import 'node_modules/gems-style/src/assets/css/scss/auth-idle-checker.scss';
 
+@import '../../node_modules/air-datepicker/air-datepicker.css';
+
+:root {
+  --bs-primary: #167c85;
+  --bs-secondary: #1a355d;
+}
+
+$fa-font-path: '../../node_modules/@fortawesome/fontawesome-free/webfonts';
+
+@import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/solid.scss';
 
 @import 'project.scss';
+
+

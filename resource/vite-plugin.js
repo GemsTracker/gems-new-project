@@ -25,6 +25,7 @@ export default function gems(userConfig) {
   return {
     config: () => ({
       publicDir: false,
+      base: '',
       build: {
         outDir: 'public/build',
         manifest: true,
