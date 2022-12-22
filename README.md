@@ -26,3 +26,8 @@ Make sure to also perform the following commands to populate the database:
 
     ./dev php vendor/bin/phinx migrate
     ./dev php vendor/bin/phinx seed:run
+
+Other useful commands:
+
+    ./dev npm update        # Update npm modules
+    ./dev npm run build     # Rebuild css
