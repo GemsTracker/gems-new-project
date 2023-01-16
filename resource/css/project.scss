@@ -15,3 +15,31 @@
     margin-bottom: 0;
     margin-right: 0.5em;
 }
+
+.adp-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 1px;
+
+    td {
+        min-width: 3em;
+        padding: .1rem .25rem;
+    }
+
+    .adp-separator {
+        min-width: 1em;
+    }
+
+    .adp-move {
+        background-color: yellow;
+    }
+    .adp-insert {
+        background-color: lightgreen;
+    }
+    .adp-delete {
+        background-color: orangered;
+    }
+    .adp-equal, .adp-match {
+        background-color: lightgray;
+    }
+}
