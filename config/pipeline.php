@@ -75,6 +75,8 @@ return function (Application $app, MiddlewareFactory $factory, ContainerInterfac
         }
     }
 
+    $app->pipe(\Gems\Middleware\DbProfilerMiddleware::class);
+
     // Register the dispatch middleware in the middleware pipeline
     $app->pipe(DispatchMiddleware::class);
 

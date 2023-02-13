@@ -8,16 +8,18 @@ use Laminas\ConfigAggregator\PhpFileProvider;
 
 // To enable or disable caching, set the `ConfigAggregator::ENABLE_CACHE` boolean in
 // `config/autoload/local.php`.
+$rootDir = dirname(__DIR__);
+
 $cacheConfig = [
-    'config_cache_path' => 'data/cache/config-cache.php',
+    'config_cache_path' => "$rootDir/data/cache/config-cache.php",
     'autoconfig' => [
-        'cache_path' => 'data/cache/autoconfig.config.php',
+        'cache_path' => "$rootDir/data/cache/autoconfig.config.php",
     ],
 ];
 
 $dirConfig = [
-    'rootDir' => dirname(__DIR__),
-    'publicDir' => dirname(__DIR__) . '/public',
+    'rootDir' => $rootDir,
+    'publicDir' => $rootDir . '/public',
 ];
 
 $modules = require('modules.php');
