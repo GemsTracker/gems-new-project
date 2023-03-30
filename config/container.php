@@ -23,7 +23,7 @@ $container = new ServiceManager($dependencies);
 
 // Set defaults
 \Laminas\Validator\AbstractValidator::setDefaultTranslator(
-    new \Gems\LaminasTranslator($container->get(\Symfony\Contracts\Translation\TranslatorInterface::class))
+    new \Gems\Translate\LaminasTranslator($container->get(\Symfony\Contracts\Translation\TranslatorInterface::class))
 );
 
 return $container;
