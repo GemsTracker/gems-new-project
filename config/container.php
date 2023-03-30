@@ -19,4 +19,11 @@ $dependencies                       = $config['dependencies'];
 $dependencies['services']['config'] = $config;
 
 // Build container
-return new ServiceManager($dependencies);
+$container = new ServiceManager($dependencies);
+
+// Set defaults
+\Laminas\Validator\AbstractValidator::setDefaultTranslator(
+    new \Gems\LaminasTranslator($container->get(\Symfony\Contracts\Translation\TranslatorInterface::class))
+);
+
+return $container;
