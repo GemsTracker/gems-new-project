@@ -10,6 +10,8 @@ use Laminas\ConfigAggregator\PhpFileProvider;
 // `config/autoload/local.php`.
 $rootDir = dirname(__DIR__);
 
+$env = $_ENV['APP_ENV'];
+
 $cacheConfig = [
     'config_cache_path' => "$rootDir/data/cache/config-cache.php",
     'autoconfig' => [
@@ -46,6 +48,7 @@ $aggregator = new ConfigAggregator([
     //   - `local.php`
     //   - `*.local.php`
     new PhpFileProvider(realpath(__DIR__) . '/autoload/{{,*.}global,{,*.}local}.php'),
+    new PhpFileProvider(realpath(__DIR__) . '/autoload/' . $env .'.php'),
 
     // Load development config if it exists
     new PhpFileProvider(realpath(__DIR__) . '/development.config.php'),
