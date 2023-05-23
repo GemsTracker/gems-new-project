@@ -16,7 +16,8 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "composer/package-versions-deprecated": true,
-            "laminas/laminas-component-installer": false
+            "laminas/laminas-component-installer": false,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "extra": {
@@ -29,6 +30,12 @@
                 "mezzio/mezzio-fastroute",
                 "mezzio/mezzio-twigrenderer"
             ]
+        },
+        "merge-plugin": {
+            "include": [
+                "lib/composer.local.json"
+            ],
+            "replace": true
         }
     },
     "require": {
@@ -47,8 +54,8 @@
         "mezzio/mezzio-helpers": "^5.8",
         "mezzio/mezzio-session-cache": "^1.7",
         "mezzio/mezzio-twigrenderer": "^2.9",
-        "symfony/dotenv": "^5.4",
-        "robmorgan/phinx": "dev-master"
+        "robmorgan/phinx": "dev-master",
+        "symfony/dotenv": "^5.4"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
@@ -58,7 +65,8 @@
         "phpunit/phpunit": "^9.5.20",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^3.6",
-        "vimeo/psalm": "^5.8"
+        "vimeo/psalm": "^5.8",
+        "wikimedia/composer-merge-plugin": "^2.1"
     },
     "autoload": {
         "psr-4": {
@@ -109,6 +117,9 @@
         }
     ],
     "scripts": {
+        "pre-update-cmd": [
+            "php update-local-composer.php"
+        ],
         "post-create-project-cmd": [
             "@development-enable"
         ],
