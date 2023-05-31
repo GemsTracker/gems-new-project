@@ -22,6 +22,14 @@ Then, shortcuts are available for frequent docker commands:
 
 After the first two commands, the application is available through http://gemstracker.test/ . Additionally, http://adminer.test/ provides access to the database and http://mailhog.test/ collects all sent e-mails.
 
+To use local repositories instead of the Github vestions add `path` statements to your `composer.json`: 
+
+        {
+            "type": "path",
+            "url": "lib/gemstracker/gems-api"
+        },
+
+
 Make sure to also perform the following commands to populate the database:
 
     ./dev php vendor/bin/phinx migrate
@@ -30,4 +38,13 @@ Make sure to also perform the following commands to populate the database:
 Other useful commands:
 
     ./dev npm update        # Update npm modules
-    ./dev npm run build     # Rebuild css
+    ./dev npm run build     # Rebuild css/javascript
+    ./dev npm run dev       # Live rebuild css/javascript
+
+To rebuild these from local repositories, replace in `package.json`: 
+
+    "gems-js": "github:GemsTracker/gems-js",
+
+With a local reference: 
+
+    "gems-js": "file:./lib/gemstracker/gems-js",
