@@ -39,7 +39,7 @@ services:
       - .env
 
   limesurvey:
-    image: martialblog/limesurvey:5.4.2-220921-fpm
+    image: martialblog/limesurvey:5.6.30-230711-fpm
     networks:
       - webdev
     env_file:
@@ -102,16 +102,16 @@ services:
      environment:
        ADMINER_DEFAULT_SERVER: mysql
 
-  mailhog:
-     container_name: mailhog
-     image: mailhog/mailhog
-     restart: always
-     labels:
-        - traefik.http.routers.mailhog.rule=Host(`mailhog.test`)
-        - traefik.http.routers.mailhog.entrypoints=http,https
-        - traefik.http.services.mailhog.loadbalancer.server.port=8025
-     networks:
-       - webdev
+  mailpit:
+    container_name: mailpit
+    image: axllent/mailpit
+    restart: always
+    labels:
+      - traefik.http.routers.mailpit.rule=Host(`mailpit.test`)
+      - traefik.http.routers.mailhog.entrypoints=http,https
+      - traefik.http.services.mailpit.loadbalancer.server.port=8025
+    networks:
+      - webdev
 
 networks:
   webdev:
