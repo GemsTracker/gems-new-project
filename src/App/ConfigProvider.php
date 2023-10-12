@@ -39,6 +39,7 @@ class ConfigProvider
         return [
             'db'           => $this->getDbSettings(),
             'dependencies' => $this->getDependencies(),
+            'locale'       => $this->getLocaleSettings(),
             'templates'    => $this->getTemplates(),
             'routes'       => $this->getRoutes(),
             'roles'        => $this->getRoles(),
@@ -70,6 +71,18 @@ class ConfigProvider
         return [
             'factories'  => [
                 HomePageHandler::class => HomePageHandlerFactory::class,
+            ],
+        ];
+    }
+
+    public function getLocaleSettings(): array
+    {
+        return [
+            'availableLocales' => [
+                'en',
+                'nl',
+                'de',
+                'fr',
             ],
         ];
     }
