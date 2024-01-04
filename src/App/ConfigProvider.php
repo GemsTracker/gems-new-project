@@ -107,6 +107,12 @@ class ConfigProvider
             ]
         ],
         [
+            [
+                'name' => 'home',
+                'path' => '/',
+                'middleware' => HomeHandler::class,
+                'allowed_methods' => ['GET'],
+            ],
         ]);
     }
 
