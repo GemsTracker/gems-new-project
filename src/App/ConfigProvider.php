@@ -107,18 +107,6 @@ class ConfigProvider
             ]
         ],
         [
-            [
-                'name' => 'home',
-                'path' => '/',
-                'middleware' => HomeHandler::class,
-                'allowed_methods' => ['GET'],
-            ],
-            [
-                'name' => 'api.ping',
-                'path' => '/api/ping',
-                'middleware' => PingHandler::class,
-                'allowed_methods' => ['GET'],
-            ],
         ]);
     }
 
