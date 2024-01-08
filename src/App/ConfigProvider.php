@@ -9,6 +9,7 @@ use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
 use App\Handler\PingHandler;
 use Gems\AuthNew\AuthenticationMiddleware;
+use Gems\Helper\Env;
 use Gems\Middleware\LocaleMiddleware;
 use Gems\Middleware\MenuMiddleware;
 use Gems\Middleware\SecurityHeadersMiddleware;
@@ -53,10 +54,10 @@ class ConfigProvider
     {
         return [
             'driver'    => 'Mysqli',
-            'host'      => getenv('DB_HOST'),
-            'username'  => getenv('DB_USER'),
-            'password'  => getenv('DB_PASS'),
-            'database'  => getenv('DB_NAME'),
+            'host'      => Env::get('DB_HOST'),
+            'username'  => Env::get('DB_USER'),
+            'password'  => Env::get('DB_PASS'),
+            'database'  => Env::get('DB_NAME'),
             'charset'   => 'utf8',
             'options'   => ['buffer_results' => true],
         ];
@@ -81,8 +82,8 @@ class ConfigProvider
             'availableLocales' => [
                 'en',
                 'nl',
-                'de',
-                'fr',
+//                'de',
+//                'fr',
             ],
         ];
     }

@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { resolve } from 'node:path';
 
 let exitHandlersBound = false;
 

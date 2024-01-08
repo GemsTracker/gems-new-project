@@ -34,7 +34,6 @@
     "require": {
         "php": "^8.1.0",
         "composer/package-versions-deprecated": "^1.11.99",
-        "gemstracker/gems-js": "2.x-dev",
         "gemstracker/gemstracker": "2.x-dev",
         "laminas/laminas-config-aggregator": "^1.7",
         "laminas/laminas-diactoros": "^2.11",
@@ -80,6 +79,26 @@
         },
         {
             "type": "git",
+            "url": "https://github.com/gemstracker/gems-api.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/gemstracker/gems-fhir-api.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/gemstracker/gems-oauth2.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/gemstracker/gemstracker-library.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/GemsTracker/MUtil.git"
+        },
+        {
+            "type": "git",
             "url": "https://github.com/MagnaFacta/zalt-html.git"
         },
         {
@@ -105,18 +124,6 @@
         {
             "type": "git",
             "url": "https://github.com/MagnaFacta/zalt-util.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/gemstracker/gems-oauth2.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/gemstracker/gems-api.git"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/gemstracker/gems-fhir-api.git"
         }
     ],
     "scripts": {
