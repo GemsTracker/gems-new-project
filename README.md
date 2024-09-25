@@ -22,7 +22,7 @@ Then, shortcuts are available for frequent docker commands:
 
 After the first two commands, the application is available through http://gemstracker.test/ . Additionally, http://adminer.test/ provides access to the database and http://mailhog.test/ collects all sent e-mails.
 
-To use local repositories instead of the GitHub versions add `path` statements to your `composer.json`: 
+To use local repositories instead of the GitHub versions add `path` statements to your `composer.json`:
 
         {
             "type": "path",
@@ -46,20 +46,20 @@ Other useful commands:
     ./dev npm run build     # Rebuild css/javascript
     ./dev npm run dev       # Live rebuild css/javascript
 
-To rebuild these from local repositories, replace in `package.json`: 
+To rebuild these from local repositories, replace in `package.json`:
 
     "gems-js": "github:GemsTracker/gems-js",
 
-With a local reference: 
+With a local reference:
 
     "gems-js": "file:./lib/gemstracker/gems-js",
 
 # Windows IIS installation (without docker)
 
-First off we advise you to use [PHP Manager for IIS](https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10). (Google for the latest version.) Make sure you have PHP 8.1 
+First off we advise you to use [PHP Manager for IIS](https://www.iis.net/downloads/community/2018/05/php-manager-150-for-iis-10). (Google for the latest version.) Make sure you have PHP 8.1
 installed activated and selected. Make sure the IIS Rewrite module is installed as well.
 
-For Redis installation follow the instructions on [this page](https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/redis-windows/). 
+For Redis installation follow the instructions on [this page](https://docs.faveohelpdesk.com/docs/installation/providers/enterprise/redis-windows/).
 
 Run the `./dev php` commands using `php -f bin\console.php`.
 

@@ -38,12 +38,21 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
+//            'auth'         => $this->getAuthSettings(),
             'db'           => $this->getDbSettings(),
             'dependencies' => $this->getDependencies(),
+            'email'        => $this->getEmailSettings(),
             'locale'       => $this->getLocaleSettings(),
             'templates'    => $this->getTemplates(),
             'routes'       => $this->getRoutes(),
             'roles'        => $this->getRoles(),
+        ];
+    }
+
+    protected function getAuthSettings(): array
+    {
+        return [
+            'allowLoginOnOtherOrganization' => true,
         ];
     }
 
@@ -73,6 +82,14 @@ class ConfigProvider
             'factories'  => [
                 HomePageHandler::class => HomePageHandlerFactory::class,
             ],
+        ];
+    }
+
+    public function getEmailSettings(): array
+    {
+        return  [
+            'dsn' => 'smtp://localhost:25',
+            'site' => 'dcsw@magnafacta.nl',
         ];
     }
 

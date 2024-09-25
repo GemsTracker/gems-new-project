@@ -10,6 +10,11 @@ if (PHP_SAPI === 'cli-server' && $_SERVER['SCRIPT_FILENAME'] !== __FILE__) {
 chdir(dirname(__DIR__));
 require 'vendor/autoload.php';
 
+//ini_set('display_errors', 'on');
+//ini_set('display_startup_errors', 'on');
+//error_reporting(E_ALL);
+//ini_set('error_log', dirname(__DIR__) . '/data/logs/php_errors.log');
+
 /**
  * Self-called anonymous function that creates its own scope and keeps the global namespace clean.
  */
