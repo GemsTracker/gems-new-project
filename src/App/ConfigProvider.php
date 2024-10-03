@@ -39,6 +39,7 @@ class ConfigProvider
     {
         return [
 //            'auth'         => $this->getAuthSettings(),
+//            'console'      => $this->getConsoleSettings(),
             'db'           => $this->getDbSettings(),
             'dependencies' => $this->getDependencies(),
             'email'        => $this->getEmailSettings(),
@@ -53,6 +54,13 @@ class ConfigProvider
     {
         return [
             'allowLoginOnOtherOrganization' => true,
+        ];
+    }
+
+    public function getConsoleSettings(): array
+    {
+        return [
+            'resetPassword' => true,
         ];
     }
 
