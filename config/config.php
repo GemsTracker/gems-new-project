@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Gems\Helper\Env;
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ConfigAggregator\PhpFileProvider;
@@ -10,7 +11,7 @@ use Laminas\ConfigAggregator\PhpFileProvider;
 // `config/autoload/local.php`.
 $rootDir = dirname(__DIR__);
 
-$env = $_ENV['APP_ENV'];
+$env = Env::get('APP_ENV');
 
 $cacheConfig = [
     'config_cache_path' => "$rootDir/data/cache/config-cache.php",

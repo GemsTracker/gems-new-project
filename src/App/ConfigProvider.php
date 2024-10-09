@@ -7,7 +7,6 @@ namespace App;
 use App\Handler\HomeHandler;
 use App\Handler\HomePageHandler;
 use App\Handler\HomePageHandlerFactory;
-use App\Handler\PingHandler;
 use Gems\AuthNew\AuthenticationMiddleware;
 use Gems\Helper\Env;
 use Gems\Middleware\LocaleMiddleware;
@@ -38,6 +37,7 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
+            'app'          => $this->getAppSettings(),
 //            'auth'         => $this->getAuthSettings(),
 //            'console'      => $this->getConsoleSettings(),
             'db'           => $this->getDbSettings(),
@@ -47,6 +47,15 @@ class ConfigProvider
             'templates'    => $this->getTemplates(),
             'routes'       => $this->getRoutes(),
             'roles'        => $this->getRoles(),
+        ];
+    }
+
+    protected function getAppSettings(): array
+    {
+        return [
+            'name' => 'GemsTracker',
+            'show_title' => true,
+            'show_env' => 'short',
         ];
     }
 
