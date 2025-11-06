@@ -2,3 +2,4 @@
 !cache
 !cache/.gitkeep
 !.gitignore
+!debug-code-examples.php

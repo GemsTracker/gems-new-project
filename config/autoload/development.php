@@ -14,10 +14,11 @@ use Mezzio\Session\SessionPersistenceInterface;
 
 return [
     ConfigAggregator::ENABLE_CACHE => false,
-//    'cache' => [
+    'cache' => [
+        'adapter' => 'null',
 //        'adapter' => 'redis',
 //        'dsn' => 'rediss://redis-server-pulse-redis-server?ssl[verify_peer_name]=0&ssl[verify_peer]=0',
-//    ],
+    ],
 //    'certificates' => [
 //        'public' => null, //getenv('OAUTH2_PUBLIC_KEY') ? str_replace('\n', "\n", getenv('OAUTH2_PUBLIC_KEY')) : null,
 //        'private' => null, //getenv('OAUTH2_PRIVATE_KEY') ? str_replace('\n', "\n", getenv('OAUTH2_PRIVATE_KEY')) : null,

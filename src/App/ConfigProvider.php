@@ -37,16 +37,24 @@ class ConfigProvider
     public function __invoke(): array
     {
         return [
-            'app'          => $this->getAppSettings(),
-//            'auth'         => $this->getAuthSettings(),
-//            'console'      => $this->getConsoleSettings(),
-            'db'           => $this->getDbSettings(),
-            'dependencies' => $this->getDependencies(),
-            'email'        => $this->getEmailSettings(),
-            'locale'       => $this->getLocaleSettings(),
-            'templates'    => $this->getTemplates(),
-            'routes'       => $this->getRoutes(),
-            'roles'        => $this->getRoles(),
+            'app'            => $this->getAppSettings(),
+//            'auth'           => $this->getAuthSettings(),
+            'cache'        => $this->getCacheSettings(),
+//            'console'        => $this->getConsoleSettings(),
+            'db'             => $this->getDbSettings(),
+            'dependencies'   => $this->getDependencies(),
+            'email'          => $this->getEmailSettings(),
+            'interface'      => $this->getInterfaceSettings(),
+//            'javascript'     => $this->getJavascript(),
+            'locale'         => $this->getLocaleSettings(),
+//            'model'          => $this->getModelSettings(),
+//            'overLoaderPaths' => ['App'],
+            'roles'           => $this->getRoles(),
+            'routes'           => $this->getRoutes(),
+            'security'         => $this->getSecuritySettings(),
+            'templates'        => $this->getTemplates(),
+//            'translations'     => $this->getTranslationSettings(),
+            'twofactor'        => $this->getTwoFactor(),
         ];
     }
 
@@ -63,6 +71,13 @@ class ConfigProvider
     {
         return [
             'allowLoginOnOtherOrganization' => true,
+        ];
+    }
+
+    public function getCacheSettings(): array
+    {
+        return [
+            'adapter' => 'file',
         ];
     }
 
@@ -110,6 +125,22 @@ class ConfigProvider
         ];
     }
 
+    protected function getInterfaceSettings(): array
+    {
+        return [
+            'autosearch' => true,
+        ];
+    }
+
+    protected function getJavascript()
+    {
+        return [
+            'translations' => [
+                'Cp\Translate\JavascriptTranslations' => dirname(__DIR__) . '/cp-js/src/locales',
+            ],
+        ];
+    }
+
     public function getLocaleSettings(): array
     {
         return [
@@ -119,6 +150,14 @@ class ConfigProvider
 //                'de',
 //                'fr',
             ],
+            'default' => 'en',
+        ];
+    }
+
+    protected function getModelSettings()
+    {
+        return [
+            'translateDatabaseFields' => true,
         ];
     }
 
@@ -151,6 +190,31 @@ class ConfigProvider
         ]);
     }
 
+    protected function getSecuritySettings(): array
+    {
+        return [
+            'headers' => // null,
+                [
+                    'default' => [
+                        'Content-Security-Policy' => 'default-src \'none\'; script-src \'self\'; style-src \'self\' \'unsafe-inline\'; img-src \'self\' data:; font-src \'self\' data:; connect-src \'self\'; frame-src \'self\' cpregister.nl youtube.com; frame-ancestors \'self\'; form-action \'self\'; block-all-mixed-content; base-uri \'self\';',
+                        'Permissions-Policy' => 'accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), execution-while-not-rendered=(self), execution-while-out-of-viewport=(self), fullscreen=(self), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), navigation-override=(self), payment=(), picture-in-picture=(), publickey-credentials-get=(self), screen-wake-lock=(), sync-xhr=(self), usb=(), web-share=(), xr-spatial-tracking=()',
+                        'Referrer-Policy' => 'same-origin',
+                        'Strict-Transport-Security' => 'max-age=31536000;includeSubDomains',
+                        'X-Content-Type-Options' => 'nosniff',
+                        'X-Frame-Options' => 'deny',
+                    ],
+                ],
+        ];
+    }
+
+    protected function getSurveySettings(): array
+    {
+        return [
+            'tracks' => ['afterChangeRoute' => 'respondent.show'],
+        ];
+    }
+
+    /**
     /**
      * Returns the templates configuration
      *
@@ -166,7 +230,14 @@ class ConfigProvider
         ];
     }
 
-    /**
+    protected function getTranslationSettings(): array
+    {
+        return [
+            'paths' => [
+                'cp' => [dirname(__DIR__) . '/languages'],
+            ],
+        ];
+    }    /**
      * Returns the roles defined by this project
      *
      * @return mixed[]
@@ -174,6 +245,17 @@ class ConfigProvider
     public function getRoles(): array
     {
         return [
+        ];
+    }
+
+    protected function getTwoFactor(): array
+    {
+        return [
+            'methods' => [
+                'SmsHotp' => [
+                    'disabled' => true,
+                ],
+            ],
         ];
     }
 }
