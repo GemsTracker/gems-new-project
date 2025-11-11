@@ -46,6 +46,7 @@ class ConfigProvider
             'email'          => $this->getEmailSettings(),
             'interface'      => $this->getInterfaceSettings(),
 //            'javascript'     => $this->getJavascript(),
+//            'ldap'           => $this->getLdap(),
             'locale'         => $this->getLocaleSettings(),
 //            'model'          => $this->getModelSettings(),
 //            'overLoaderPaths' => ['App'],
@@ -140,6 +141,22 @@ class ConfigProvider
             ],
         ];
     }
+
+//    public function getLdap(): array
+//    {
+//        return [
+//            'server1' => [
+//                'host' => 'dc1.dc2',
+//                'accountCanonicalForm' => 3,
+//                'accountDomainName' => 'dc1.dc2',
+//                'accountDomainNameShort' => 'dc1',
+//                'baseDn' => 'DC=dc1,DC=dc2',
+//                'bindRequiresDn' => 0,
+//                'port' => 636,
+//                'useSsl' => 1,
+//            ],
+//        ];
+//    }
 
     public function getLocaleSettings(): array
     {

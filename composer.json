@@ -143,7 +143,13 @@
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "serve": "php -S 0.0.0.0:8080 -t public/",
-        "test": "phpunit --colors=always",
+        "stan": [
+          "vendor/bin/phpstan --memory-limit=512M"
+        ],
+        "test": [
+          "vendor/bin/phpunit tests"
+        ],
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
-    }
+    },
+  }
 }
