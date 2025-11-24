@@ -23,6 +23,7 @@ $cacheConfig = [
 $dirConfig = [
     'rootDir' => $rootDir,
     'publicDir' => $rootDir . '/public',
+    'logDir' => $rootDir . '/data/logs',
 ];
 
 $modules = require('modules.php');
