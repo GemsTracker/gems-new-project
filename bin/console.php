@@ -7,7 +7,9 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
 
-$container = require __DIR__ . '/../config/container.php';
+chdir(__DIR__ . '/../');
+
+$container = require 'config/container.php';
 $config = $container->get('config');
 
 $app = new Application();
