@@ -37,7 +37,7 @@
         "gemstracker/gemstracker": "2.x-dev",
         "gemstracker/ls6-basic-themes": "dev-main",
         "laminas/laminas-config-aggregator": "^1.7",
-        "laminas/laminas-diactoros": "^2.11",
+        "laminas/laminas-diactoros": "^^2.11|^3.8",
         "laminas/laminas-servicemanager": "^3.11",
         "laminas/laminas-stdlib": "^3.9",
         "magnafacta/zalt-loader": "dev-psr-11",
@@ -48,7 +48,7 @@
         "mezzio/mezzio-helpers": "^5.8",
         "mezzio/mezzio-session-cache": "^1.7",
         "mezzio/mezzio-twigrenderer": "^2.9",
-        "symfony/dotenv": "^6.2",
+        "symfony/dotenv": "^6.2"
     },
     "require-dev": {
         "filp/whoops": "^2.14.5",
@@ -60,7 +60,7 @@
         "phpunit/phpunit": "^9.5.20",
         "roave/security-advisories": "dev-master",
         "squizlabs/php_codesniffer": "^3.6",
-        "vimeo/psalm": "^5.8"
+        "vimeo/psalm": "^5.0|^6.1@dev"
     },
     "autoload": {
         "psr-4": {
@@ -154,6 +154,5 @@
           "vendor/bin/phpunit tests"
         ],
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
-    },
-  }
+    }
 }
