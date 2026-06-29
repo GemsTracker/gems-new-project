@@ -38,7 +38,7 @@
         "gemstracker/ls6-basic-themes": "dev-main",
         "laminas/laminas-config-aggregator": "^1.7",
         "laminas/laminas-diactoros": "^^2.11|^3.8",
-        "laminas/laminas-servicemanager": "^3.11",
+        "laminas/laminas-servicemanager": "^3.23",
         "laminas/laminas-stdlib": "^3.9",
         "magnafacta/zalt-loader": "dev-psr-11",
         "mezzio/mezzio": "^3.10",
